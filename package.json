@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "node app",
     "start": "node app"
   },
   "dependencies": {
