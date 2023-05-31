@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="qrcode"></div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/qrcode.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        var qrcode = new QRCode("qrcode");
+
+        //jika server sudah siap
+        socket.on('connect', () => {
+            console.log('Berhasil masuk');
+        })
+        
+        socket.on('qr', (text) => {
+            console.log(text);
+            // text = text.padEnd(220);
+            
+            // qrcode.makeCode(text);
+        });
+        
+        socket.on('ready', (text) => {
+            console.log(text);
+        });
+    </script>
+</body>
+</html>
